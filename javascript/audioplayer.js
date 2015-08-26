@@ -71,6 +71,15 @@ coverImg.src = "album-03-300x300.jpg";
 coverImg.style.height = "50px";
 cover.appendChild(coverImg);
 
+/*setting timline basics */
+var timeline = document.createElement("DIV");
+timeline.style.position = "relative";
+timeline.style.display = "inline-block";
+timeline.style.height = "50px";
+timeline.style.backgroundColor = "grey";
+timeline.style.width = "79%";
+timeline.style.verticalAlign = "middle";
+
 /*setting source attributs*/
 source.src = "music/montageson.ogg";
 source.type = "audio/ogg";
@@ -84,6 +93,8 @@ fullPlayer.appendChild(backwardBtn);
 fullPlayer.appendChild(playBtn);
 fullPlayer.appendChild(forwardBtn);
 fullPlayer.appendChild(cover);
+fullPlayer.appendChild(timeline);
+
 fullPlayer.appendChild(audio);
 
 
