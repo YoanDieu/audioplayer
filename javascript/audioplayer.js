@@ -1,11 +1,10 @@
 var $body = document.getElementsByTagName("body")[0];
 var fullPlayer = document.createElement("DIV");
+
+
+/* AUDIO ITSELF */
 var audio = document.createElement("AUDIO");
 var source = document.createElement("SOURCE");
-var playBtn = document.createElement("BUTTON");
-var backwardBtn = document.createElement("DIV");
-var script = document.getElementsByTagName("script")[0];
-
 
 /*setting fullPlayer style */
 fullPlayer.style.backgroundColor = "black";
@@ -16,22 +15,45 @@ fullPlayer.style.height = "50px";
 fullPlayer.style.zIndex = "500";
 fullPlayer.style.bottom = "0px"
 
-/* setting player attributs */
-audio.id = "audio";
+/* setting backward css and attributs */
+var backwardBtn = document.createElement("DIV");
+backwardBtn.style.width = "37px";
+backwardBtn.style.height = "100%";
+backwardBtn.style.marginLeft = "16px";
+backwardBtn.style.display = "inline-block";
+var iconBack = document.createElement("I");
+iconBack.className = "fa fa-step-backward";
+iconBack.style.color = "white";
+iconBack.style.marginTop = "17px";
+iconBack.style.height = "100%";
+backwardBtn.appendChild(iconBack);
+
+/* setting playBtn css and attributs */
+var playBtn = document.createElement("DIV");
+playBtn.style.width = "37px";
+playBtn.style.height = "100%";
+playBtn.style.display = "inline-block"
+var iconPlay = document.createElement("I");
+iconPlay.className = "fa fa-play";
+iconPlay.style.color = "white";
+iconPlay.style.marginTop = "17px";
+iconPlay.style.height = "100%";
+playBtn.appendChild(iconPlay);
 
 /*setting source attributs*/
 source.src = "music/montageson.ogg";
 source.type = "audio/ogg";
 
 /* setting playerBtn attribut and style */
-playBtn.innerHTML = "play";
 
 
 
 audio.appendChild(source);
+fullPlayer.appendChild(backwardBtn);
 fullPlayer.appendChild(playBtn);
 fullPlayer.appendChild(audio);
 
-$body.appendChild(fullPlayer/*, $body.firstChild*/);
+
+$body.appendChild(fullPlayer);
 
 playBtn.addEventListener("click", function(e){ audio.play();}, false);
