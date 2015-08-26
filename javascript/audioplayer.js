@@ -13,6 +13,8 @@ fullPlayer.style.position = "fixed";
 fullPlayer.style.display = "block";
 fullPlayer.style.width = "100%";
 fullPlayer.style.height = "50px";
+fullPlayer.style.zIndex = "500";
+fullPlayer.style.bottom = "0px"
 
 /* setting player attributs */
 audio.id = "audio";
@@ -30,6 +32,6 @@ audio.appendChild(source);
 fullPlayer.appendChild(playBtn);
 fullPlayer.appendChild(audio);
 
-$body.insertBefore(fullPlayer, script);
+$body.appendChild(fullPlayer/*, $body.firstChild*/);
 
 playBtn.addEventListener("click", function(e){ audio.play();}, false);

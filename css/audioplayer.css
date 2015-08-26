@@ -1,14 +1,22 @@
+html {
+  padding: 0;
+  margin: 0;
+}
+
 body {
   margin:0;
   padding: 0;
 }
 
 div {
-  margin-top: -500px;
+  margin-top: 0;
   padding: 0;
+  bottom: 0px;
 }
 
 p {
+  margin: 0;
+  position: relative;
   width: 500px;
 }
 
