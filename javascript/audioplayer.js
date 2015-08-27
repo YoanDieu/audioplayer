@@ -86,7 +86,7 @@ cover.style.height = "100%";
 cover.style.display = "inline-block";
 cover.style.verticalAlign = "middle";
 var coverImg = document.createElement("IMG");
-coverImg.src = "album-03-300x300.jpg";
+coverImg.src = "images/album-01.jpg";
 coverImg.style.height = "50px";
 cover.appendChild(coverImg);
 
@@ -161,4 +161,19 @@ fullPlayer.appendChild(audio);
 
 $body.appendChild(fullPlayer);
 
-playBtn.addEventListener("click", function(e){ audio.play();}, false);
+
+var led= document.createElement("P");
+
+function playPause(e){
+  audio.play();
+    if (audio.ended) {
+      alert("fini!");
+    }
+
+    if (audio.ended) {
+      alert("fini!");
+    }
+
+}
+
+playBtn.addEventListener("click", playPause , false);
