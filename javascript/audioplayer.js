@@ -79,6 +79,12 @@ timeline.style.backgroundColor = "grey";
 timeline.style.width = "80.2%";
 timeline.style.verticalAlign = "middle";
 
+/* setting progressBar */
+var progressBar = document.createElement("DIV");
+progressBar.style.display = "block";
+progressBar.style.height = "50px";
+progressBar.style.backgroundColor = "#0c0c0c";
+progressBar.style.width = "100%";
 
 /* setting imagecover css and attributs */
 var cover = document.createElement("DIV");
@@ -86,6 +92,7 @@ cover.style.width = "50px";
 cover.style.height = "100%";
 cover.style.display = "inline-block";
 cover.style.verticalAlign = "middle";
+cover.style.zIndex = "510";
 var coverImg = document.createElement("IMG");
 coverImg.src = "images/album-01.jpg";
 coverImg.style.height = "50px";
@@ -99,6 +106,7 @@ songTitle.style.verticalAlign = "middle";
 songTitle.style.display = "inline-block";
 songTitle.style.fontSize = "13px";
 songTitle.innerHTML = "Aeolus - She Threw Herself Into The Sea";
+songTitle.style.zIndex = "510";
 var songLength = document.createElement("P");
 songLength.style.color = "white";
 songLength.style.verticalAlign = "middle";
@@ -106,8 +114,10 @@ songLength.style.display = "inline-block";
 songLength.style.textAlign = "right";
 songLength.style.fontSize = "13px";
 songLength.innerHTML = "00:00/03:20";
+songLength.style.zIndex = "510";
 
 /*pushing all into timeline */
+timeline.appendChild(progressBar);
 timeline.appendChild(cover);
 timeline.appendChild(songTitle);
 timeline.appendChild(songLength);
