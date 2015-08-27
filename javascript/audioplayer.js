@@ -44,6 +44,14 @@ iconPlay.style.verticalAlign = "middle";
 iconPlay.style.marginTop = "15px";
 iconPlay.style.fontSize = "20px";
 playBtn.appendChild(iconPlay);
+var iconPause = document.createElement("I");
+iconPause.className = "fa fa-pause";
+iconPause.style.color = "white";
+iconPause.style.verticalAlign = "middle";
+iconPause.style.marginTop = "15px";
+iconPause.style.fontSize = "20px";
+iconPause.style.display = "none";
+playBtn.appendChild(iconPause);
 
 /* setting forward css and attributs */
 var forwardBtn = document.createElement("DIV");
