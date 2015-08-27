@@ -76,7 +76,7 @@ timeline.style.position = "relative";
 timeline.style.display = "inline-block";
 timeline.style.height = "50px";
 timeline.style.backgroundColor = "grey";
-timeline.style.width = "79%";
+timeline.style.width = "80.2%";
 timeline.style.verticalAlign = "middle";
 
 /* setting imagecover css and attributs */
@@ -110,6 +110,36 @@ timeline.appendChild(cover);
 timeline.appendChild(songTitle);
 timeline.appendChild(songLength);
 
+/* setting volumeBtn */
+var volumeBtn= document.createElement("DIV");
+volumeBtn.style.width = "32px";
+volumeBtn.style.height = "100%";
+volumeBtn.style.marginLeft = "20px";
+volumeBtn.style.marginRight = "10px";
+volumeBtn.style.display = "inline-block";
+volumeBtn.style.verticalAlign = "middle";
+var iconVolume = document.createElement("I");
+iconVolume.className = "fa fa-volume-up";
+iconVolume.style.color = "white";
+iconVolume.style.fontSize = "20px";
+iconVolume.style.marginTop = "15px";
+volumeBtn.appendChild(iconVolume);
+
+/* setting BurgerBtn */
+var burgerBtn= document.createElement("DIV");
+burgerBtn.style.width = "32px";
+burgerBtn.style.height = "100%";
+burgerBtn.style.marginLeft = "0px";
+burgerBtn.style.marginRight = "10px";
+burgerBtn.style.display = "inline-block";
+burgerBtn.style.verticalAlign = "middle";
+var iconBurger = document.createElement("I");
+iconBurger.className = "fa fa-bars";
+iconBurger.style.color = "white";
+iconBurger.style.fontSize = "20px";
+iconBurger.style.marginTop = "15px";
+burgerBtn.appendChild(iconBurger);
+
 /*setting source attributs*/
 source.src = "music/montageson.ogg";
 source.type = "audio/ogg";
@@ -123,6 +153,8 @@ fullPlayer.appendChild(backwardBtn);
 fullPlayer.appendChild(playBtn);
 fullPlayer.appendChild(forwardBtn);
 fullPlayer.appendChild(timeline);
+fullPlayer.appendChild(volumeBtn);
+fullPlayer.appendChild(burgerBtn);
 
 fullPlayer.appendChild(audio);
 
