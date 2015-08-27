@@ -183,15 +183,6 @@ fullPlayer.appendChild(audio);
 $body.appendChild(fullPlayer);
 
 
-/* timeline progression update */
-function update() {
-   var duration = audio.duration;    // Durée totale
-   var time     = audio.currentTime; // Temps écoulé
-   var fraction = time / duration;
-   var percent  = fraction * 100;
-   progress.style.width = percent + '%';
-}
-
 /* play and pause toggle function */
 
 function playPause(){
@@ -206,8 +197,60 @@ function playPause(){
     iconPause.style.display = "inline-block";
   }
 
+}
+
+/* timeline progression update */
+function update() {
+   var duration = audio.duration;    // Durée totale
+   var time     = audio.currentTime; // Temps écoulé
+   var fraction = time / duration;
+   var percent  = fraction * 100;
+   progress.style.width = percent + '%';
+}
+
+/* function to get position of the mouse */
+function getMousePosition(e) {
+
+  return {
+    x: e.pageX,
+    y: e.pageY
+  }
 
 }
 
+/* function to get an element position */
+function getElementPosition(element) {
+  var top = 0;
+  var left = 0;
+
+  do  {
+    top += element.offsetTop;
+    left += element.offsetLeft;
+  } while (element = element.offsetParent );
+
+  return {
+    x: top,
+    y: left
+  }
+
+}
+
+/* function to control progressBar */
+
+function progressControl() {
+  var choice = getMousePosition(this);
+  alert(choice.x);
+  var barPosition = getElementPosition(progress);
+  var progressBarWidth = progressBar.offsetWidth;
+
+  var x = choice.x - barPosition.x;
+  var percent = Math.ceil((x / progressBarWidth )* 100);
+  var duration = audio.duration;
+
+  audio.currentTime = (duration * percent) / 100;
+}
+
+
 playBtn.addEventListener("click", playPause , false);
 audio.addEventListener("timeupdate", update, false);
+progressBar.addEventListener('click', progressControl, false);
