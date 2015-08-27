@@ -81,10 +81,18 @@ timeline.style.verticalAlign = "middle";
 
 /* setting progressBar */
 var progressBar = document.createElement("DIV");
-progressBar.style.display = "block";
 progressBar.style.height = "50px";
 progressBar.style.backgroundColor = "#0c0c0c";
 progressBar.style.width = "100%";
+
+/*setting progress */
+var progress = document.createElement("DIV");
+progress.style.height = "50px";
+progress.style.backgroundColor = "#303030";
+progress.style.width = "0%";
+progress.style.zIndex = "-10";
+progress.id = "progress";
+progressBar.appendChild(progress);
 
 /* setting imagecover css and attributs */
 var cover = document.createElement("DIV");
@@ -175,7 +183,18 @@ fullPlayer.appendChild(audio);
 $body.appendChild(fullPlayer);
 
 
-function playPause(e){
+/* timeline progression update */
+function update() {
+   var duration = audio.duration;    // Durée totale
+   var time     = audio.currentTime; // Temps écoulé
+   var fraction = time / duration;
+   var percent  = fraction * 100;
+   progress.style.width = percent + '%';
+}
+
+/* play and pause toggle function */
+
+function playPause(){
 
   if (!audio.paused){
     audio.pause();
@@ -191,3 +210,4 @@ function playPause(e){
 }
 
 playBtn.addEventListener("click", playPause , false);
+audio.addEventListener("timeupdate", update, false);
