@@ -79,6 +79,7 @@ timeline.style.backgroundColor = "grey";
 timeline.style.width = "80.2%";
 timeline.style.verticalAlign = "middle";
 
+
 /* setting imagecover css and attributs */
 var cover = document.createElement("DIV");
 cover.style.width = "50px";
@@ -93,6 +94,7 @@ cover.appendChild(coverImg);
 /* settings song and song length */
 var songTitle = document.createElement("P");
 songTitle.style.color = "white";
+songTitle.style.width = "60%";
 songTitle.style.verticalAlign = "middle";
 songTitle.style.display = "inline-block";
 songTitle.style.fontSize = "13px";
@@ -159,20 +161,22 @@ fullPlayer.appendChild(burgerBtn);
 fullPlayer.appendChild(audio);
 
 
+/* pushing all into body */
 $body.appendChild(fullPlayer);
 
 
-var led= document.createElement("P");
-
 function playPause(e){
-  audio.play();
-    if (audio.ended) {
-      alert("fini!");
-    }
 
-    if (audio.ended) {
-      alert("fini!");
-    }
+  if (!audio.paused){
+    audio.pause();
+    iconPause.style.display = "none";
+    iconPlay.style.display = "inline-block";
+  }else {
+    audio.play();
+    iconPlay.style.display = "none";
+    iconPause.style.display = "inline-block";
+  }
+
 
 }
 
