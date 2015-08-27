@@ -68,6 +68,17 @@ iconForward.style.fontSize = "13px";
 iconForward.style.marginTop = "20px";
 forwardBtn.appendChild(iconForward);
 
+
+
+/*setting timline basics */
+var timeline = document.createElement("DIV");
+timeline.style.position = "relative";
+timeline.style.display = "inline-block";
+timeline.style.height = "50px";
+timeline.style.backgroundColor = "grey";
+timeline.style.width = "79%";
+timeline.style.verticalAlign = "middle";
+
 /* setting imagecover css and attributs */
 var cover = document.createElement("DIV");
 cover.style.width = "50px";
@@ -79,14 +90,25 @@ coverImg.src = "album-03-300x300.jpg";
 coverImg.style.height = "50px";
 cover.appendChild(coverImg);
 
-/*setting timline basics */
-var timeline = document.createElement("DIV");
-timeline.style.position = "relative";
-timeline.style.display = "inline-block";
-timeline.style.height = "50px";
-timeline.style.backgroundColor = "grey";
-timeline.style.width = "79%";
-timeline.style.verticalAlign = "middle";
+/* settings song and song length */
+var songTitle = document.createElement("P");
+songTitle.style.color = "white";
+songTitle.style.verticalAlign = "middle";
+songTitle.style.display = "inline-block";
+songTitle.style.fontSize = "13px";
+songTitle.innerHTML = "Aeolus - She Threw Herself Into The Sea";
+var songLength = document.createElement("P");
+songLength.style.color = "white";
+songLength.style.verticalAlign = "middle";
+songLength.style.display = "inline-block";
+songLength.style.textAlign = "right";
+songLength.style.fontSize = "13px";
+songLength.innerHTML = "00:00/03:20";
+
+/*pushing all into timeline */
+timeline.appendChild(cover);
+timeline.appendChild(songTitle);
+timeline.appendChild(songLength);
 
 /*setting source attributs*/
 source.src = "music/montageson.ogg";
@@ -100,7 +122,6 @@ audio.appendChild(source);
 fullPlayer.appendChild(backwardBtn);
 fullPlayer.appendChild(playBtn);
 fullPlayer.appendChild(forwardBtn);
-fullPlayer.appendChild(cover);
 fullPlayer.appendChild(timeline);
 
 fullPlayer.appendChild(audio);
