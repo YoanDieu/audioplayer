@@ -212,8 +212,8 @@ function update() {
 function getMousePosition(e) {
 
   return {
-    x: e.pageX,
-    y: e.pageY
+    x: e.clientX,
+    y: e.clientY
   }
 
 }
@@ -229,22 +229,25 @@ function getElementPosition(element) {
   } while (element = element.offsetParent );
 
   return {
-    x: top,
-    y: left
+    x: left,
+    y: top
   }
 
 }
 
 /* function to control progressBar */
 
-function progressControl() {
-  var choice = getMousePosition(this);
-  alert(choice.x);
-  var barPosition = getElementPosition(progress);
+function progressControl(e) {
+  var choice = getMousePosition(e);
+
+  var barPosition = getElementPosition(progressBar);
   var progressBarWidth = progressBar.offsetWidth;
 
-  var x = choice.x - barPosition.x;
-  var percent = Math.ceil((x / progressBarWidth )* 100);
+
+  var x = choice.x - barPosition.x ;
+
+  var percent = (x / progressBarWidth )* 100;
+
   var duration = audio.duration;
 
   audio.currentTime = (duration * percent) / 100;
