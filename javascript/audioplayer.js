@@ -191,12 +191,19 @@ function playPause(){
     audio.pause();
     iconPause.style.display = "none";
     iconPlay.style.display = "inline-block";
-  }else {
+  } else {
     audio.play();
     iconPlay.style.display = "none";
     iconPause.style.display = "inline-block";
   }
 
+}
+
+function audioEndedReset() {
+  if( audio.ended) {
+    iconPause.style.display = "none";
+    iconPlay.style.display = "inline-block";
+  }
 }
 
 /* timeline progression update */
@@ -256,4 +263,5 @@ function progressControl(e) {
 
 playBtn.addEventListener("click", playPause , false);
 audio.addEventListener("timeupdate", update, false);
+audio.addEventListener("timeupdate", audioEndedReset, false);
 progressBar.addEventListener('click', progressControl, false);
