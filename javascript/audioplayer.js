@@ -98,6 +98,8 @@ progressBar.appendChild(progress);
 var cover = document.createElement("DIV");
 cover.style.width = "50px";
 cover.style.height = "100%";
+cover.style.marginTop = "-50px";
+cover.style.position = "absolute";
 cover.style.display = "inline-block";
 cover.style.verticalAlign = "middle";
 cover.style.zIndex = "510";
@@ -110,13 +112,16 @@ cover.appendChild(coverImg);
 var songTitle = document.createElement("P");
 songTitle.style.color = "white";
 songTitle.style.width = "60%";
+
 songTitle.style.verticalAlign = "middle";
 songTitle.style.display = "inline-block";
 songTitle.style.fontSize = "13px";
 songTitle.innerHTML = "Aeolus - She Threw Herself Into The Sea";
 songTitle.style.zIndex = "510";
 var songLength = document.createElement("P");
+songLength.style.position = "relative";
 songLength.style.color = "white";
+
 songLength.style.verticalAlign = "middle";
 songLength.style.display = "inline-block";
 songLength.style.textAlign = "right";
@@ -124,11 +129,21 @@ songLength.style.fontSize = "13px";
 songLength.innerHTML = "00:00/03:20";
 songLength.style.zIndex = "510";
 
+var songIntel = document.createElement("DIV");
+songIntel.style.position = "relative";
+songIntel.style.display = "inline-block";
+songIntel.style.height = "50px";
+songIntel.style.backgroundColor = "none";
+songIntel.style.width = "100%";
+songIntel.style.verticalAlign = "middle";
+songIntel.style.marginTop = "-71px";
+songIntel.appendChild(songTitle);
+songIntel.appendChild(songLength);
+
 /*pushing all into timeline */
 timeline.appendChild(progressBar);
 timeline.appendChild(cover);
-timeline.appendChild(songTitle);
-timeline.appendChild(songLength);
+timeline.appendChild(songIntel);
 
 /* setting volumeBtn */
 var volumeBtn= document.createElement("DIV");
@@ -216,7 +231,7 @@ function update() {
 }
 
 /* function to get position of the mouse */
-function getMousePosition(e) {
+function clickedAt(e) {
 
   return {
     x: e.clientX,
@@ -226,7 +241,7 @@ function getMousePosition(e) {
 }
 
 /* function to get an element position */
-function getElementPosition(element) {
+function elementPositionAt(element) {
   var top = 0;
   var left = 0;
 
@@ -245,23 +260,23 @@ function getElementPosition(element) {
 /* function to control progressBar */
 
 function progressControl(e) {
-  var choice = getMousePosition(e);
+  var durationChoice = clickedAt(e);
 
-  var barPosition = getElementPosition(progressBar);
-  var progressBarWidth = progressBar.offsetWidth;
+  var barPosition = elementPositionAt(progressBar);
+  var barFullWidth = progressBar.offsetWidth;
 
 
-  var x = choice.x - barPosition.x ;
+  var x = durationChoice.x - barPosition.x ;
 
-  var percent = (x / progressBarWidth )* 100;
+  var choicePercentage = (x / barFullWidth )* 100;
 
-  var duration = audio.duration;
+  var songDuration = audio.duration;
 
-  audio.currentTime = (duration * percent) / 100;
+  audio.currentTime = (songDuration * choicePercentage) / 100;
 }
 
 
 playBtn.addEventListener("click", playPause , false);
 audio.addEventListener("timeupdate", update, false);
 audio.addEventListener("timeupdate", audioEndedReset, false);
-progressBar.addEventListener('click', progressControl, false);
+songIntel.addEventListener('click', progressControl, false);
