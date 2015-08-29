@@ -111,8 +111,8 @@ cover.appendChild(coverImg);
 /* settings song and song length */
 var songTitle = document.createElement("P");
 songTitle.style.color = "white";
-songTitle.style.width = "60%";
-
+songTitle.style.width = "45%";
+songTitle.style.marginLeft = "8%";
 songTitle.style.verticalAlign = "middle";
 songTitle.style.display = "inline-block";
 songTitle.style.fontSize = "13px";
@@ -121,18 +121,19 @@ songTitle.style.zIndex = "510";
 var songLength = document.createElement("P");
 songLength.style.position = "relative";
 songLength.style.color = "white";
-
+songLength.style.width = "45%";
 songLength.style.verticalAlign = "middle";
 songLength.style.display = "inline-block";
 songLength.style.textAlign = "right";
 songLength.style.fontSize = "13px";
-songLength.innerHTML = "00:00/03:20";
+songLength.innerHTML = "00:00 / 00:00";
 songLength.style.zIndex = "510";
 
 var songIntel = document.createElement("DIV");
 songIntel.style.position = "relative";
 songIntel.style.display = "inline-block";
 songIntel.style.height = "50px";
+songIntel.style.paddingTop = "28px";
 songIntel.style.backgroundColor = "none";
 songIntel.style.width = "100%";
 songIntel.style.verticalAlign = "middle";
@@ -198,6 +199,29 @@ fullPlayer.appendChild(audio);
 $body.appendChild(fullPlayer);
 
 
+
+/* function to convert seconds in hh:mm:ss format */
+function formatTime(time) {
+    var hours = Math.floor(time / 3600);
+    var mins  = Math.floor((time % 3600) / 60);
+    var secs  = Math.floor(time % 60);
+
+    if (secs < 10) {
+        secs = "0" + secs;
+    }
+
+    if (hours) {
+        if (mins < 10) {
+            mins = "0" + mins;
+
+        }
+        return hours + ":" + mins + ":" + secs; // hh:mm:ss
+
+    } else {
+        return mins + ":" + secs; // mm:ss
+    }
+}
+
 /* play and pause toggle function */
 
 function playPause(){
@@ -218,6 +242,8 @@ function audioEndedReset() {
   if( audio.ended) {
     iconPause.style.display = "none";
     iconPlay.style.display = "inline-block";
+    progress.style.width = '0%';
+    songLength.textContent = "00:00 / 00:00"
   }
 }
 
@@ -228,6 +254,7 @@ function update() {
    var fraction = time / duration;
    var percent  = fraction * 100;
    progress.style.width = percent + '%';
+   songLength.textContent = formatTime(audio.currentTime) + " / " + formatTime(audio.duration);
 }
 
 /* function to get position of the mouse */
@@ -260,6 +287,8 @@ function elementPositionAt(element) {
 /* function to control progressBar */
 
 function progressControl(e) {
+
+  if (audio.currentTime > 0){
   var durationChoice = clickedAt(e);
 
   var barPosition = elementPositionAt(progressBar);
@@ -273,6 +302,7 @@ function progressControl(e) {
   var songDuration = audio.duration;
 
   audio.currentTime = (songDuration * choicePercentage) / 100;
+  }
 }
 
 
