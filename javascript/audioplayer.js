@@ -1,6 +1,12 @@
+    /* Made by hand by Yoan Dieu based on obsdian audiotheme player */
+    /* to get started go line 89 ! */
+
+
 
   var $body = document.getElementsByTagName("body")[0];
   var actualSong = 0;
+
+  /* prototyping songs */
 
   function Song(id, name, album, author, mp3, ogg, duration ) {
 
@@ -80,14 +86,25 @@
 
     }
 
+    /*to add a songs do :          ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    var = song[i] = new Song([i],"song_name","album_name", "author_name", "path_to_the_song.mp3 or none", "path_to_the_song.ogg")
+
+    for each song you want, juste below like i did (you can replace those one)//////////////////////////////////////////////////*/
+
   var song1 = new Song(1, "Exploring & Travelling Theme", "LOST", "Michael Giacchino", "music/LOST - Exploring & Travelling Theme.mp3", "None", "3:36");
   var song2 = new Song(2, "Bens Theme", "LOST", "Michael Giacchino", "music/LOST - Bens Theme.mp3", "None", "3:51");
   var song3 = new Song(3, "Charlies Theme", "LOST", "Michael Giacchino", "music/LOST - Charlies Theme.mp3", "None", "3:32");
   var song4 = new Song(4, "Desmond & Pennys Theme", "LOST", "Michael Giacchino", "music/LOST - Desmond & Pennys Theme.mp3", "None", "4:19");
   var song5 = new Song(5, "Richards Theme", "LOST", "Michael Giacchino", "music/LOST - Richards Theme.mp3", "None", "3:42");
 
-
+  /* Now juste add all of the songs you created in the tab below, juste like i did.  */
     var playList = [song1, song2, song3, song4, song5];
+
+  /*/////////////////////////////////////////////////////////////////////////////
+  /* Et voila! You're ready to link the file to your html and play the songs ! */
+  ///////////////////////////////////////////////////////////////////////////////
+
 
     var storage = {};
     var fullPlayer = document.createElement("DIV");
